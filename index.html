@@ -95,11 +95,19 @@
   </div>
 
   <div id="noCode" class="no-code" style="display:none;">
-    <a class="button" href="https://apps.apple.com/app/id6796059354">Get the app</a>
+    <a class="button" id="getAppLinkNoCode" href="https://apps.apple.com/app/id6796059354">Get the app</a>
     <p>Ask whoever invited you for your family's invite code once you open the app.</p>
   </div>
 
   <script>
+    const IOS_LINK = 'https://apps.apple.com/app/id6796059354';
+    const ANDROID_LINK = 'https://play.google.com/store/apps/details?id=com.scottgordon.kinfire';
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const storeLink = isAndroid ? ANDROID_LINK : IOS_LINK;
+
+    document.getElementById('getAppLink').href = storeLink;
+    document.getElementById('getAppLinkNoCode').href = storeLink;
+
     const params = new URLSearchParams(window.location.search);
     const code = (params.get('code') || '').toUpperCase().trim();
     const hint = document.getElementById('hint');
