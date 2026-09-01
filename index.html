@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Join your family on Kinfire</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, system-ui, sans-serif;
+    margin: 0;
+    padding: 32px 20px 60px;
+    background: #1a1210;
+    color: #f5ede4;
+    text-align: center;
+  }
+  .flame { font-size: 56px; margin-bottom: 8px; }
+  h1 { font-size: 1.6em; margin: 0 0 8px; }
+  p.sub { color: #cbb9ac; font-size: 1.05em; line-height: 1.5; max-width: 420px; margin: 0 auto 32px; }
+  .code-box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 360px;
+    margin: 0 auto 28px;
+  }
+  .code-label { font-size: 0.95em; color: #cbb9ac; margin-bottom: 10px; }
+  .code {
+    font-size: 2.4em;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: #ffb45c;
+  }
+  .steps {
+    max-width: 400px;
+    margin: 0 auto 32px;
+    text-align: left;
+    background: rgba(255,255,255,0.04);
+    border-radius: 16px;
+    padding: 20px 24px;
+  }
+  .steps li { margin-bottom: 14px; line-height: 1.5; font-size: 1.05em; }
+  .steps li:last-child { margin-bottom: 0; }
+  a.button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff8a3c, #ff5c3c);
+    color: #1a1210;
+    font-weight: 700;
+    font-size: 1.15em;
+    padding: 16px 36px;
+    border-radius: 999px;
+    text-decoration: none;
+    margin-bottom: 16px;
+  }
+  button.copy {
+    display: inline-block;
+    background: transparent;
+    color: #ffb45c;
+    border: 1px solid #ffb45c;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-family: inherit;
+  }
+  .hint { font-size: 0.9em; color: #a8968a; margin-top: 10px; min-height: 1.2em; }
+  .no-code { color: #cbb9ac; font-size: 1em; max-width: 380px; margin: 0 auto; }
+</style>
+</head>
+<body>
+  <div class="flame">🔥</div>
+  <h1>You're invited to Kinfire</h1>
+  <p class="sub">A private, weekly voice journal for you and your family.</p>
+
+  <div id="withCode" style="display:none;">
+    <div class="code-box">
+      <div class="code-label">Your family's invite code</div>
+      <div class="code" id="codeText"></div>
+    </div>
+
+    <ol class="steps">
+      <li>1. Tap "Get the app" below and install Kinfire.</li>
+      <li>2. Open the app.</li>
+      <li>3. Choose "Join with an invite code," then tap the Paste button — your code will fill in automatically.</li>
+    </ol>
+
+    <div>
+      <a class="button" id="getAppLink" href="https://apps.apple.com/app/id6796059354">Get the app</a>
+    </div>
+    <div>
+      <button class="copy" id="copyBtn">Copy code</button>
+    </div>
+    <div class="hint" id="hint"></div>
+  </div>
+
+  <div id="noCode" class="no-code" style="display:none;">
+    <a class="button" href="https://apps.apple.com/app/id6796059354">Get the app</a>
+    <p>Ask whoever invited you for your family's invite code once you open the app.</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = (params.get('code') || '').toUpperCase().trim();
+    const hint = document.getElementById('hint');
+
+    if (code) {
+      document.getElementById('codeText').textContent = code;
+      document.getElementById('withCode').style.display = 'block';
+
+      async function copyCode() {
+        try {
+          await navigator.clipboard.writeText(code);
+          hint.textContent = 'Code copied — it will paste in automatically.';
+        } catch (e) {
+          hint.textContent = '';
+        }
+      }
+
+      document.getElementById('getAppLink').addEventListener('click', copyCode);
+      document.getElementById('copyBtn').addEventListener('click', copyCode);
+    } else {
+      document.getElementById('noCode').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
