@@ -4,213 +4,44 @@
 <meta charset="UTF-8">
 <title>Kinfire, your family's campfire</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Kinfire is a private, weekly voice exchange for your family. One matched question, two answers, stitched into a Sunday digest.">
+<meta name="description" content="Kinfire is a fun, private weekly voice exchange for your family. One matched question, everyone answers, combined into a Sunday digest.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kinfire">
-<meta property="og:description" content="A private, weekly voice exchange for your family. One matched question, two answers, stitched into a Sunday digest.">
+<meta property="og:description" content="A fun, private weekly voice exchange for your family. One matched question, everyone answers, combined into a Sunday digest.">
 <meta property="og:url" content="https://joinkinfire.com/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kinfire">
-<meta name="twitter:description" content="A private, weekly voice exchange for your family. One matched question, two answers, stitched into a Sunday digest.">
-<style>
-  * { box-sizing: border-box; }
-  :root {
-    --bg: #1a1210;
-    --bg-panel: #221713;
-    --cream: #f5ede4;
-    --cream-muted: #cbb9ac;
-    --cream-faint: #93816f;
-    --accent: #ffb45c;
-    --line: rgba(255,255,255,0.08);
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, system-ui, "Segoe UI", sans-serif;
-    margin: 0;
-    background: var(--bg);
-    color: var(--cream);
-    line-height: 1.5;
-    overflow-x: hidden;
-  }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
-  a { color: inherit; }
-  img { display: block; max-width: 100%; }
-
-  /* ---------- top nav ---------- */
-  nav.top {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 24px; max-width: 1040px; margin: 0 auto;
-  }
-  nav.top .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.05em; }
-  nav.top .links { display: flex; gap: 24px; font-size: 0.9em; color: var(--cream-muted); }
-  nav.top .links a { text-decoration: none; }
-  nav.top .links a:hover { color: var(--accent); }
-  nav.top .store-row.small { display: flex; gap: 8px; }
-  nav.top a.button.small {
-    background: linear-gradient(135deg, #ff8a3c, #ff5c3c);
-    color: #1a1210; font-weight: 700; font-size: 0.8em;
-    padding: 8px 14px; border-radius: 999px; text-decoration: none;
-    white-space: nowrap;
-  }
-  @media (max-width: 620px) { nav.top .links { display: none; } }
-  @media (max-width: 460px) { nav.top .store-row.small { display: none; } }
-
-  /* ---------- hero ---------- */
-  header.hero {
-    max-width: 1040px; margin: 0 auto; padding: 20px 24px 10px;
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; align-items: center;
-  }
-  @media (max-width: 760px) { header.hero { grid-template-columns: 1fr; text-align: center; padding-top: 4px; } }
-  .hero-kicker {
-    font-size: 1.1em; font-weight: 600; font-style: italic; color: var(--accent);
-    margin: 0 0 16px;
-  }
-  h1.title { font-size: 2.3em; margin: 0 0 14px; letter-spacing: -0.015em; line-height: 1.12; }
-  p.tagline { color: var(--cream-muted); font-size: 1.1em; line-height: 1.5; margin: 0 0 22px; max-width: 440px; }
-  @media (max-width: 760px) { p.tagline { margin-left: auto; margin-right: auto; } }
-  .cta-row { display: flex; flex-direction: column; gap: 10px; }
-  .store-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  @media (max-width: 760px) { .store-row { justify-content: center; } }
-  a.button {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: linear-gradient(135deg, #ff8a3c, #ff5c3c);
-    color: #1a1210; font-weight: 700; font-size: 1.02em;
-    padding: 13px 26px; border-radius: 999px; text-decoration: none;
-    box-shadow: 0 10px 26px -12px rgba(255,92,60,0.55);
-  }
-  .microcopy { font-size: 0.85em; color: var(--cream-faint); }
-  .hero-shot { justify-self: center; }
-  .hero-shot .phone { width: 290px; }
-
-  /* ---------- phone frame ---------- */
-  .phone {
-    border: 6px solid #382a24; border-radius: 30px; overflow: hidden;
-    background: #000; box-shadow: 0 30px 60px -30px rgba(0,0,0,0.7);
-  }
-  .phone img { display: block; width: 100%; }
-
-  /* ---------- generic section ---------- */
-  section { padding: 44px 24px; border-top: 1px solid var(--line); }
-  section .wrap { max-width: 1040px; }
-  .eyebrow {
-    text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.76em;
-    color: var(--accent); font-weight: 700; margin-bottom: 8px;
-  }
-  h2 { font-size: 1.5em; margin: 0 0 12px; letter-spacing: -0.01em; }
-  p.lead { color: var(--cream-muted); font-size: 1.02em; max-width: 560px; margin: 0 0 4px; }
-
-  /* ---------- feature row (image + text, alternating) ---------- */
-  .feature-row {
-    display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; align-items: center;
-    margin-top: 8px;
-  }
-  #why .feature-row { align-items: start; }
-  .feature-row.reverse { grid-template-columns: 1.15fr 0.85fr; }
-  .feature-row.reverse .feature-copy { order: 1; }
-  .feature-row.reverse .feature-shot { order: 2; }
-  @media (max-width: 760px) {
-    .feature-row, .feature-row.reverse { grid-template-columns: 1fr; text-align: center; }
-    .feature-row.reverse .feature-copy { order: 2; }
-    .feature-row.reverse .feature-shot { order: 1; }
-  }
-  .feature-shot { display: flex; justify-content: center; }
-  .feature-shot .phone { width: 280px; }
-  .feature-copy h3 { font-size: 1.2em; margin: 0 0 10px; }
-  .feature-copy p { color: var(--cream-muted); font-size: 0.98em; margin: 0; }
-
-  /* ---------- differentiation ---------- */
-  .compare {
-    margin-top: 24px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-  }
-  @media (max-width: 620px) { .compare { grid-template-columns: 1fr; } }
-  .compare-col { border-radius: 16px; padding: 22px 20px; border: 1px solid var(--line); }
-  .compare-col.them { background: rgba(255,255,255,0.03); }
-  .compare-col.us { background: rgba(255,138,60,0.08); border-color: rgba(255,138,60,0.3); }
-  .compare-col h4 { margin: 0 0 12px; font-size: 0.92em; text-transform: uppercase; letter-spacing: 0.04em; color: var(--cream-faint); }
-  .compare-col.us h4 { color: var(--accent); }
-  .compare-col ul { margin: 0; padding-left: 18px; color: var(--cream-muted); font-size: 0.94em; }
-  .compare-col li { margin-bottom: 9px; }
-  .compare-col.us li { color: var(--cream); }
-
-  /* ---------- pricing ---------- */
-  .pricing-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 24px; align-items: start; }
-  @media (max-width: 760px) { .pricing-row { grid-template-columns: 1fr; } }
-  .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .included { padding-top: 4px; }
-  .included h4 { margin: 0 0 14px; font-size: 0.92em; text-transform: uppercase; letter-spacing: 0.04em; color: var(--cream-faint); }
-  .included ul { margin: 0; padding: 0; list-style: none; }
-  .included li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; color: var(--cream-muted); font-size: 0.96em; }
-  .included li .check { color: var(--accent); flex: none; }
-  @media (max-width: 520px) { .price-grid { grid-template-columns: 1fr; } }
-  .price-card { border-radius: 18px; padding: 22px; border: 1px solid var(--line); background: var(--bg-panel); position: relative; }
-  .price-card.featured { border-color: rgba(255,138,60,0.4); background: rgba(255,138,60,0.07); }
-  .price-card .badge {
-    position: absolute; top: -11px; left: 20px;
-    background: linear-gradient(135deg, #ff8a3c, #ff5c3c); color: #1a1210;
-    font-size: 0.7em; font-weight: 800; padding: 4px 12px; border-radius: 999px;
-    text-transform: uppercase; letter-spacing: 0.04em;
-  }
-  .price-card .plan { font-size: 0.88em; color: var(--cream-muted); margin-bottom: 6px; }
-  .price-card .amount { font-size: 1.9em; font-weight: 800; margin-bottom: 2px; }
-  .price-card .per { font-size: 0.83em; color: var(--cream-faint); margin-bottom: 12px; }
-  .price-card .note { font-size: 0.84em; color: var(--cream-muted); }
-  .price-fine { color: var(--cream-faint); font-size: 0.86em; margin-top: 18px; max-width: 560px; }
-
-  /* ---------- faq ---------- */
-  .faq { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; }
-  @media (max-width: 700px) { .faq { grid-template-columns: 1fr; } }
-  .faq-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .faq-item h3 { margin: 0 0 5px; font-size: 0.98em; }
-  .faq-item p { margin: 0; color: var(--cream-muted); font-size: 0.92em; }
-
-  /* ---------- invite panel (shown only with ?code=) ---------- */
-  #inviteBanner {
-    display: none;
-    max-width: 420px; margin: 20px auto 0;
-    background: rgba(255,255,255,0.05); border: 1px solid var(--line);
-    border-radius: 18px; padding: 20px; text-align: center;
-  }
-  #inviteBanner .code-label { font-size: 0.88em; color: var(--cream-muted); margin-bottom: 8px; }
-  #inviteBanner .code { font-size: 1.9em; font-weight: 700; letter-spacing: 5px; color: var(--accent); margin-bottom: 12px; }
-  #inviteBanner .steps { text-align: left; font-size: 0.9em; color: var(--cream-muted); margin: 12px 0 0; padding-left: 20px; }
-  #inviteBanner .steps li { margin-bottom: 7px; }
-  #inviteBanner button.copy {
-    background: transparent; color: var(--accent); border: 1px solid var(--accent);
-    font-size: 0.88em; font-weight: 600; padding: 8px 18px; border-radius: 999px;
-    font-family: inherit; margin-top: 10px; cursor: pointer;
-  }
-  #inviteBanner .hint { font-size: 0.83em; color: var(--cream-faint); margin-top: 8px; min-height: 1.1em; }
-
-  /* ---------- footer ---------- */
-  footer { text-align: center; padding: 40px 24px 36px; }
-  footer .flame { font-size: 26px; margin-bottom: 10px; }
-  footer .foot-links { font-size: 0.84em; color: var(--cream-faint); margin-top: 16px; }
-  footer .foot-links a { text-decoration: underline; }
-  footer .copyright { font-size: 0.8em; color: var(--cream-faint); margin-top: 12px; opacity: 0.7; }
-</style>
+<meta name="twitter:description" content="A fun, private weekly voice exchange for your family. One matched question, everyone answers, combined into a Sunday digest.">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <nav class="top">
-  <div class="brand">🔥 Kinfire</div>
+  <a class="brand" href="/"><span class="mark"></span>Kinfire</a>
   <div class="links">
     <a href="#how">How it works</a>
-    <a href="#different">Why Kinfire</a>
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
+    <a href="why-we-created-kinfire.html">Our story</a>
   </div>
   <div class="store-row small">
     <a class="button small" href="https://apps.apple.com/app/id6796059354">App Store</a>
     <a class="button small" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
   </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how">How it works</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="why-we-created-kinfire.html">Our story</a>
+</div>
 
 <header class="hero">
   <div>
-    <div class="hero-kicker">"I wish I'd asked more questions."</div>
+    <div class="hero-badge">A new question drops every week</div>
     <h1 class="title">Your family's campfire, one voice at a time</h1>
-    <p class="tagline">One matched question a week for your entire family. Everyone's voice answers, saved for you forever. One Sunday digest worth listening to again.</p>
+    <p class="tagline">One fun (occasionally thoughtful) question for the whole family, every week. Everyone answers in their own voice. Sunday night, it turns into a mini episode just for you.</p>
 
     <div id="inviteBanner">
       <div class="code-label">Your family's invite code</div>
@@ -233,88 +64,146 @@
     </div>
   </div>
   <div class="hero-shot">
-    <div class="phone"><img src="assets/record.png" alt="Kinfire recording screen with a large glowing flame record button and this week's question"></div>
+    <div class="phone"><img src="assets/ledger.png" alt="Kinfire Family Ledger screen showing Week 34 Prank Wars at the top of a growing archive of weekly questions"></div>
   </div>
 </header>
+
+<section id="what">
+  <div class="wrap">
+    <div class="eyebrow">What Kinfire actually is</div>
+    <h2>Not a group text. A weekly voice exchange.</h2>
+    <p class="value-statement">Kinfire asks your whole family one matched question every week. Everyone records a short voice answer on their own time, no thread, no notifications piling up, no one waiting on a reply. Sunday night, every answer gets put together into one digest anyone can play whenever they want. It's not a memoir project either: nobody's handed a stack of prompts to fill out alone.</p>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="mark"></div>
+        <h3>Individual, not a thread</h3>
+        <p>Everyone answers on their own, in their own time. No group chat to keep up with, no "reply all," no notifications piling up.</p>
+      </div>
+      <div class="value-card">
+        <div class="mark"></div>
+        <h3>Listen whenever, no pressure</h3>
+        <p>Nobody's waiting on you. Play it during a commute, at dinner, whenever it actually works for you.</p>
+      </div>
+      <div class="value-card">
+        <div class="mark"></div>
+        <h3>Saved, not scrolled past</h3>
+        <p>Every answer and every digest sticks around. Come back and listen again next month or next year.</p>
+      </div>
+      <div class="value-card">
+        <div class="mark"></div>
+        <h3>Real insight into each other</h3>
+        <p>You hear how each person in your family actually thinks and answers, not just what they post.</p>
+      </div>
+      <div class="value-card">
+        <div class="mark"></div>
+        <h3>Building your family's history</h3>
+        <p>Every week adds to a growing archive of real voices, still there for your family years from now.</p>
+      </div>
+      <div class="value-card">
+        <div class="mark"></div>
+        <h3>Genuinely easy</h3>
+        <p>One glowing button for grandparents, nothing to set up for anyone else. Answering takes under a minute.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="how">
   <div class="wrap">
     <div class="eyebrow">How it works</div>
     <h2>One ritual, every Sunday</h2>
-    <p class="lead">No feed to scroll, no daily nagging. Just a quiet weekly rhythm.</p>
+    <p class="lead">No feed to scroll, no daily nagging, no homework. Just a quick weekly rhythm everyone actually looks forward to.</p>
 
     <div class="feature-row">
       <div class="feature-shot">
-        <div class="phone"><img src="assets/thisweek.png" alt="Kinfire This Week's Question screen showing one family member's answer and a record button for your own answer"></div>
+        <div class="phone"><img src="assets/thisweek.png" alt="Kinfire This Week's Question screen showing the Prank Wars question and a record button"></div>
+        <span class="shot-label">Family view</span>
       </div>
       <div class="feature-copy">
         <h3>1. Two matched questions land each week</h3>
-        <p>One looking back, one looking forward, same theme, different angle. You each see the other's answer and record your own right alongside it.</p>
+        <p>Same theme, two angles, one for grandparents, one for the rest of the family. Most weeks are playful, a few get more thoughtful. You each see the other's answer and record your own right alongside it.</p>
       </div>
     </div>
 
     <div class="feature-row reverse">
       <div class="feature-shot">
         <div class="phone"><img src="assets/record.png" alt="Kinfire recording screen with a large glowing flame record button"></div>
+        <span class="shot-label">Grandparent view</span>
       </div>
       <div class="feature-copy">
-        <h3>2. The senior view is one button</h3>
-        <p>Whoever's in the senior role gets one giant glowing button and huge text. No menus, no scrolling, nothing to figure out.</p>
+        <h3>2. The grandparent view is one button</h3>
+        <p>Whoever's in the grandparent role gets one giant glowing button and huge text. No menus, no scrolling, nothing to figure out. Tap, talk, done.</p>
       </div>
     </div>
 
     <div class="feature-row">
       <div class="feature-shot">
-        <div class="phone"><img src="assets/digest.png" alt="Kinfire Digest screen with a Play This Week's Digest button and a list of past weekly digests"></div>
+        <div class="phone"><img src="assets/digest.png" alt="Kinfire Digest screen with a Play This Week's Digest button"></div>
       </div>
       <div class="feature-copy">
-        <h3>3. Sunday night, the digest compiles itself</h3>
-        <p>Both answers get stitched together automatically, with a little chime, into one shareable audio moment. It quietly builds into an archive, 52 weeks a year, sequenced light to meaningful.</p>
+        <h3>3. Sunday night, it's all put together for you</h3>
+        <p>Every answer from that week is automatically combined into one recording, with a little chime, that anyone in the family can play. Week after week, it builds into a growing collection you can always go back and listen to.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="vibe">
+  <div class="wrap">
+    <div class="eyebrow">Sample questions</div>
+    <h2>Mostly fun. Occasionally thoughtful.</h2>
+    <p class="lead">Most weeks are about pranks, weird food, bad haircuts, and cheesy crushes. A few weeks ask something a bit more thoughtful. That's the mix, on purpose.</p>
+    <div class="vibe-grid">
+      <div class="vibe-card">"What's the best prank you ever pulled, or had pulled on you?"</div>
+      <div class="vibe-card">"What's the weirdest food combo you actually love?"</div>
+      <div class="vibe-card">"What's the worst haircut or hairstyle you ever had?"</div>
+      <div class="vibe-card">"What's the cheesiest thing you ever did to impress a crush?"</div>
+      <div class="vibe-card">"What's the worst gift you ever got and had to fake liking?"</div>
+      <div class="vibe-card">"What's the funniest thing you got away with as a kid?"</div>
     </div>
   </div>
 </section>
 
 <section id="why">
   <div class="wrap">
-    <div class="eyebrow">Why I built this</div>
-    <h2>Where the idea came from</h2>
+    <div class="eyebrow">Why we made this</div>
     <div class="feature-row">
       <div class="feature-copy">
-        <p class="lead" style="margin-bottom:0;">As my parents got older, I realized how much I'd never actually asked them. How they met. What my mom's favorite food was. Small things I always figured I'd get around to someday.</p>
-        <p style="color: var(--cream-muted); font-size: 1.02em; max-width: 560px; margin: 16px 0 0;">Then I lost my dad. My brother and I have both said the same thing more than once, that we'd give a lot just to hear his voice again. I only have one or two videos of him, and hearing his voice in those still brings me real joy. Not just me either. Everyone in my family who hears them feels it.</p>
-        <p style="color: var(--cream-muted); font-size: 1.02em; max-width: 560px; margin: 16px 0 0;">Kinfire is built so any family can hear each other whenever they want, wherever they are, without a group text nobody has time to keep up with. It's not only for the people you've lost, either. It's just as much about the people who are still here, while they're still here. Some weeks the questions are easy. Some are funny. Some are hard. My family has gotten real joy out of it, and I hope yours does too.</p>
+        <h3>We built the app we wished we'd had</h3>
+        <p>We started Kinfire after realizing how many ordinary questions we'd never actually asked our own family, and how easy it is to let that slide for years. It's not only about the big, thoughtful stuff. Most weeks it's just a good excuse to hear everyone's voice, corny stories included.</p>
+        <p><a href="why-we-created-kinfire.html" style="color: var(--accent); font-weight: 700; text-decoration: none;">Read our full story &rarr;</a></p>
       </div>
       <div class="feature-shot">
         <div class="phone"><img src="assets/kidquestion.png" alt="Kinfire Week 1 The Silly Side screen showing both the grandparent's and the kid's own lighthearted question, both answered"></div>
+        <span class="shot-label">Grandparent's question + kid's question, same week</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="different">
+<section id="soon">
   <div class="wrap">
-    <div class="eyebrow">The difference</div>
-    <h2>Not another memoir project</h2>
-    <p class="lead">Most family story apps hand one person a stack of prompts to answer alone. Everyone else reads it later, if the book ever gets finished. That's homework, not a conversation.</p>
-    <div class="compare">
-      <div class="compare-col them">
-        <h4>Typical story apps</h4>
-        <ul>
-          <li>One person answers, usually just one storyteller</li>
-          <li>Weekly prompt leads to a book, eventually</li>
-          <li>Everyone else reads it later, if at all</li>
-          <li>Output: a future memoir, someday</li>
-        </ul>
+    <div class="eyebrow">What's next</div>
+    <h2>Coming soon</h2>
+    <p class="lead">Kinfire's still young. Here's some of what we're building next.</p>
+    <div class="soon-grid">
+      <div class="soon-card">
+        <div class="soon-tag">In progress</div>
+        <div class="mark"></div>
+        <h3>Suggest your own questions</h3>
+        <p>Any family member will be able to pitch a future question, not just answer one.</p>
       </div>
-      <div class="compare-col us">
-        <h4>Kinfire</h4>
-        <ul>
-          <li>Everyone answers, every single week</li>
-          <li>Weekly question leads to a Sunday audio digest</li>
-          <li>The whole family hears each other, right away</li>
-          <li>Output: the exchange itself, weekly</li>
-        </ul>
+      <div class="soon-card">
+        <div class="soon-tag">Exploring</div>
+        <div class="mark"></div>
+        <h3>Themed question packs</h3>
+        <p>Holidays, road trips, milestones. Pick a pack instead of waiting for the weekly drop.</p>
+      </div>
+      <div class="soon-card">
+        <div class="soon-tag">Exploring</div>
+        <div class="mark"></div>
+        <h3>Faster ways to record</h3>
+        <p>Quicker capture for on-the-go voices, so answering takes even less time.</p>
       </div>
     </div>
   </div>
@@ -323,7 +212,7 @@
 <section id="pricing">
   <div class="wrap">
     <div class="eyebrow">Pricing</div>
-    <h2>One subscription, your whole family</h2>
+    <h2>One price per family, not per person</h2>
     <p class="lead">No ads, no free tier, no selling your family's recordings. Just a private space, paid for directly instead of with your data.</p>
     <div class="pricing-row">
       <div class="price-grid">
@@ -346,13 +235,15 @@
         <ul>
           <li><span class="check">&#10003;</span> Everyone in your family circle, one invite code</li>
           <li><span class="check">&#10003;</span> Unlimited weekly recordings for the whole family</li>
-          <li><span class="check">&#10003;</span> Auto-compiled Sunday digest, every week</li>
+          <li><span class="check">&#10003;</span> One ready-made Sunday digest, every week</li>
           <li><span class="check">&#10003;</span> Works across iPhone and Android</li>
           <li><span class="check">&#10003;</span> Delete everything, anytime, no questions asked</li>
         </ul>
       </div>
     </div>
-    <p class="price-fine">One subscription covers the whole family circle: whoever sets it up and everyone who joins, all on the invite code your family already has.</p>
+    <div class="gift-note">
+      <span><strong>Makes a great gift.</strong> Buy the subscription once for a birthday, Christmas, or any holiday, and the whole family gets Kinfire for the year.</span>
+    </div>
   </div>
 </section>
 
@@ -374,31 +265,48 @@
         <p>Nothing is lost. The next week's question shows up regardless, and there's no streak to protect.</p>
       </div>
       <div class="faq-item">
-        <h3>Can I cancel anytime?</h3>
+        <h3>Can we cancel anytime?</h3>
         <p>Yes, anytime, no long-term commitment beyond the period you're already in.</p>
       </div>
       <div class="faq-item">
         <h3>How many people can join?</h3>
         <p>Up to 25 people in one family circle, as many grandparents, parents, and kids as you need. Anyone already in can forward the invite code to bring in someone else.</p>
       </div>
+      <div class="faq-item">
+        <h3>Does everyone in the family have to pay?</h3>
+        <p>No, just one subscription covers the whole family circle. Whoever sets it up pays once, and everyone who joins with the invite code is included at no extra cost.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="flame">🔥</div>
   <div class="store-row" style="justify-content:center;">
     <a class="button" href="https://apps.apple.com/app/id6796059354">App Store</a>
     <a class="button" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
   </div>
   <div class="microcopy" style="margin-top:10px;">iPhone &amp; Android, 30-day free trial</div>
   <div class="foot-links">
+    <a href="why-we-created-kinfire.html">Our story</a>
     <a href="https://quixotic-plaster-c7b.notion.site/Kinfire-Privacy-Policy-3ac7959126df80eb8098f45b4a2c7555" target="_blank" rel="noopener">Privacy Policy</a>
   </div>
   <div class="copyright">Kinfire, a Blackhook Group product</div>
 </footer>
 
 <script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   const params = new URLSearchParams(window.location.search);
   const code = (params.get('code') || '').toUpperCase().trim();
   const hint = document.getElementById('hint');

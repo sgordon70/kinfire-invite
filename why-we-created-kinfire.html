@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why we created Kinfire</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The story behind Kinfire: why we built a fun, weekly way for families to hear each other's voices.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Why we created Kinfire">
+<meta property="og:description" content="The story behind Kinfire: why we built a fun, weekly way for families to hear each other's voices.">
+<meta property="og:url" content="https://joinkinfire.com/why-we-created-kinfire.html">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="top">
+  <a class="brand" href="/"><span class="mark"></span>Kinfire</a>
+  <div class="links">
+    <a href="/#how">How it works</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/#faq">FAQ</a>
+  </div>
+  <div class="store-row small">
+    <a class="button small" href="https://apps.apple.com/app/id6796059354">App Store</a>
+    <a class="button small" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#how">How it works</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/#faq">FAQ</a>
+</div>
+
+<header class="story-hero">
+  <span class="eyebrow">Our story</span>
+  <h1>Why we created Kinfire</h1>
+</header>
+
+<div class="story-body">
+  <p><a class="back-link" href="/">&larr; Back to Kinfire</a></p>
+
+  <p>As our parents got older, we realized how much we'd never actually asked them. How they met. What our mom's favorite food was. Small things we always figured we'd get around to someday.</p>
+
+  <p>Then we lost our dad. We've both said the same thing more than once: we'd give anything to hear his voice again. We only have a couple of videos of him, but his voice in those still means everything, to us and to the rest of our family.</p>
+
+  <p class="emphasis">Kinfire is built so any family can hear each other whenever they want, wherever they are, without a group text nobody has time to keep up with.</p>
+
+  <p>And it's not only for the people you've lost. It's just as much about the people who are still here, while they're still here. Most weeks the questions are easy, some are funny, a few are more thoughtful. Our family has gotten real joy out of it, and we hope yours does too.</p>
+
+  <div class="story-shots">
+    <div class="shot">
+      <div class="phone"><img src="assets/kidquestion.png" alt="Kinfire Week 1 The Silly Side screen showing both the grandparent's and the kid's own lighthearted question, both answered"></div>
+      <span class="shot-label">Grandparent's question + kid's question, same week</span>
+    </div>
+  </div>
+
+  <p class="story-signoff">The Kinfire team</p>
+
+  <p style="margin-top: 36px;"><a class="back-link" href="/">&larr; Back to Kinfire</a></p>
+</div>
+
+<footer>
+  <div class="store-row" style="justify-content:center;">
+    <a class="button" href="https://apps.apple.com/app/id6796059354">App Store</a>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
+  </div>
+  <div class="microcopy" style="margin-top:10px;">iPhone &amp; Android, 30-day free trial</div>
+  <div class="foot-links">
+    <a href="https://quixotic-plaster-c7b.notion.site/Kinfire-Privacy-Policy-3ac7959126df80eb8098f45b4a2c7555" target="_blank" rel="noopener">Privacy Policy</a>
+  </div>
+  <div class="copyright">Kinfire, a Blackhook Group product</div>
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+</body>
+</html>
