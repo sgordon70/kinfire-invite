@@ -45,12 +45,15 @@
   nav.top .links { display: flex; gap: 24px; font-size: 0.9em; color: var(--cream-muted); }
   nav.top .links a { text-decoration: none; }
   nav.top .links a:hover { color: var(--accent); }
+  nav.top .store-row.small { display: flex; gap: 8px; }
   nav.top a.button.small {
     background: linear-gradient(135deg, #ff8a3c, #ff5c3c);
-    color: #1a1210; font-weight: 700; font-size: 0.88em;
-    padding: 9px 18px; border-radius: 999px; text-decoration: none;
+    color: #1a1210; font-weight: 700; font-size: 0.8em;
+    padding: 8px 14px; border-radius: 999px; text-decoration: none;
+    white-space: nowrap;
   }
   @media (max-width: 620px) { nav.top .links { display: none; } }
+  @media (max-width: 460px) { nav.top .store-row.small { display: none; } }
 
   /* ---------- hero ---------- */
   header.hero {
@@ -65,13 +68,14 @@
   h1.title { font-size: 2.3em; margin: 0 0 14px; letter-spacing: -0.015em; line-height: 1.12; }
   p.tagline { color: var(--cream-muted); font-size: 1.1em; line-height: 1.5; margin: 0 0 22px; max-width: 440px; }
   @media (max-width: 760px) { p.tagline { margin-left: auto; margin-right: auto; } }
-  .cta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  @media (max-width: 760px) { .cta-row { justify-content: center; } }
+  .cta-row { display: flex; flex-direction: column; gap: 10px; }
+  .store-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 760px) { .store-row { justify-content: center; } }
   a.button {
-    display: inline-block;
+    display: inline-flex; align-items: center; gap: 8px;
     background: linear-gradient(135deg, #ff8a3c, #ff5c3c);
-    color: #1a1210; font-weight: 700; font-size: 1.05em;
-    padding: 14px 30px; border-radius: 999px; text-decoration: none;
+    color: #1a1210; font-weight: 700; font-size: 1.02em;
+    padding: 13px 26px; border-radius: 999px; text-decoration: none;
     box-shadow: 0 10px 26px -12px rgba(255,92,60,0.55);
   }
   .microcopy { font-size: 0.85em; color: var(--cream-faint); }
@@ -196,7 +200,10 @@
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
   </div>
-  <a class="button small" id="getAppLinkNav" href="https://apps.apple.com/app/id6796059354">Get the app</a>
+  <div class="store-row small">
+    <a class="button small" href="https://apps.apple.com/app/id6796059354">App Store</a>
+    <a class="button small" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
+  </div>
 </nav>
 
 <header class="hero">
@@ -209,7 +216,7 @@
       <div class="code-label">Your family's invite code</div>
       <div class="code" id="codeText"></div>
       <ol class="steps">
-        <li>Tap "Get the app" and install Kinfire.</li>
+        <li>Tap App Store or Google Play below and install Kinfire.</li>
         <li>Open the app.</li>
         <li>Choose "Join with an invite code," then tap Paste. Your code fills in automatically.</li>
       </ol>
@@ -218,7 +225,10 @@
     </div>
 
     <div class="cta-row">
-      <a class="button" id="getAppLink" href="https://apps.apple.com/app/id6796059354">Get the app</a>
+      <div class="store-row">
+        <a class="button" id="getAppLinkIOS" href="https://apps.apple.com/app/id6796059354">App Store</a>
+        <a class="button" id="getAppLinkAndroid" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
+      </div>
       <span class="microcopy">iPhone &amp; Android, 30-day free trial</span>
     </div>
   </div>
@@ -377,7 +387,10 @@
 
 <footer>
   <div class="flame">🔥</div>
-  <a class="button" id="getAppLinkFooter" href="https://apps.apple.com/app/id6796059354">Get the app</a>
+  <div class="store-row" style="justify-content:center;">
+    <a class="button" href="https://apps.apple.com/app/id6796059354">App Store</a>
+    <a class="button" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
+  </div>
   <div class="microcopy" style="margin-top:10px;">iPhone &amp; Android, 30-day free trial</div>
   <div class="foot-links">
     <a href="https://quixotic-plaster-c7b.notion.site/Kinfire-Privacy-Policy-3ac7959126df80eb8098f45b4a2c7555" target="_blank" rel="noopener">Privacy Policy</a>
@@ -386,13 +399,6 @@
 </footer>
 
 <script>
-  const IOS_LINK = 'https://apps.apple.com/app/id6796059354';
-  const ANDROID_LINK = 'https://play.google.com/store/apps/details?id=com.scottgordon.kinfire';
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  const storeLink = isAndroid ? ANDROID_LINK : IOS_LINK;
-
-  document.querySelectorAll('#getAppLink, #getAppLinkFooter, #getAppLinkNav').forEach(el => { el.href = storeLink; });
-
   const params = new URLSearchParams(window.location.search);
   const code = (params.get('code') || '').toUpperCase().trim();
   const hint = document.getElementById('hint');
@@ -410,7 +416,8 @@
       }
     }
 
-    document.getElementById('getAppLink').addEventListener('click', copyCode);
+    document.getElementById('getAppLinkIOS').addEventListener('click', copyCode);
+    document.getElementById('getAppLinkAndroid').addEventListener('click', copyCode);
     document.getElementById('copyBtn').addEventListener('click', copyCode);
   }
 </script>
