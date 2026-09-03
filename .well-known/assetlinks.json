@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.scottgordon.kinfire",
+      "sha256_cert_fingerprints": [
+        "09:26:D6:56:4D:1F:DC:E9:05:2C:9F:C0:3B:68:DF:26:DC:72:3B:71:FD:D1:DE:0E:CF:C8:2B:88:48:92:EC:A9"
+      ]
+    }
+  }
+]

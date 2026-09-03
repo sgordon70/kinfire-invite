@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "M6FW7DS2PS.com.scottgordon.Kinfire",
+        "paths": ["/join/*"]
+      }
+    ]
+  }
+}
