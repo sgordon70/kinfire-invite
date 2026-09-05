@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kinfire</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=/">
+<script>
+(function () {
+  var m = window.location.pathname.match(/^\/join\/([A-Za-z0-9]+)\/?$/i);
+  var dest = m ? ('/?code=' + encodeURIComponent(m[1].toUpperCase())) : '/';
+  window.location.replace(dest);
+})();
+</script>
+</head>
+<body>
+<p>Redirecting to <a href="/">joinkinfire.com</a>&hellip;</p>
+</body>
+</html>
