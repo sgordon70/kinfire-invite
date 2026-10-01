@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kinfire Terms of Use</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The terms for using Kinfire and its subscription.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .story-body h2 { font-size: 1.25em; margin: 32px 0 8px; color: var(--cream); }
+  .story-body ul { padding-left: 22px; }
+  .story-body li { margin: 6px 0; }
+  .story-body a { color: var(--accent); }
+  .updated { color: var(--cream-faint); font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a class="brand" href="/"><span class="mark"></span>Kinfire</a>
+  <div class="links">
+    <a href="/#how">How it works</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/#faq">FAQ</a>
+    <a href="support.html">Support</a>
+  </div>
+  <div class="store-row small">
+    <a class="button small" href="https://apps.apple.com/app/id6796059354">App Store</a>
+    <a class="button small" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#how">How it works</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/#faq">FAQ</a>
+  <a href="support.html">Support</a>
+</div>
+
+<header class="story-hero">
+  <span class="eyebrow">Kinfire</span>
+  <h1>Terms of use</h1>
+</header>
+
+<div class="story-body">
+  <p class="updated">Last updated September 30, 2026</p>
+
+  <p>These terms cover your use of Kinfire, made by Blackhook Group. By using the app you agree to them. If you got Kinfire from the App Store, Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">standard license agreement</a> also applies.</p>
+
+  <h2>Subscription</h2>
+  <ul>
+    <li>The person who starts a family pays for it. Everyone who joins with the invite code is covered. A family can have up to 25 people.</li>
+    <li>Plans are monthly or annual. New subscribers may get a free trial. The price and trial length are shown before you buy.</li>
+    <li>Payment is charged to your Apple or Google account. The subscription renews automatically unless you cancel at least 24 hours before the end of the current period.</li>
+    <li>Cancel any time in your App Store or Google Play subscription settings. You keep access until the end of the period you paid for.</li>
+    <li>Refunds are handled by Apple or Google under their own rules.</li>
+    <li>If the subscription ends, nobody in the family can record new answers, but everyone can still listen to past ones.</li>
+  </ul>
+
+  <h2>Your recordings</h2>
+  <p>You own what you record. You give us permission to store your recordings and share them with the people in your family, which is the only reason we have them. You can delete them at any time (see the <a href="privacy.html">privacy policy</a>).</p>
+
+  <h2>Using Kinfire fairly</h2>
+  <p>Only record yourself, or people who are fine with being recorded. Do not use Kinfire to harass anyone or to share anything illegal. Share your invite code only with people you want in your family. We may remove a family that breaks these rules.</p>
+
+  <h2>No guarantees</h2>
+  <p>We work hard to keep Kinfire running and your answers safe, but the app is provided as is. Keep your own copy of anything you cannot afford to lose. To the extent the law allows, our liability is limited to the amount you paid for Kinfire in the last 12 months.</p>
+
+  <h2>Changes</h2>
+  <p>We may update these terms. If we do, we will change the date at the top of this page.</p>
+
+  <h2>Contact</h2>
+  <p>Blackhook Group, <a href="mailto:hello@blackhookgroup.com">hello@blackhookgroup.com</a></p>
+</div>
+
+<footer>
+  <div class="foot-links">
+    <a href="why-we-created-kinfire.html">Our story</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="support.html">Support</a>
+  </div>
+  <div class="copyright">Kinfire, a Blackhook Group product</div>
+</footer>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kinfire Support</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Help with Kinfire: joining a family, recording, the Elder screen, subscriptions and deleting data.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .story-body h2 { font-size: 1.25em; margin: 32px 0 8px; color: var(--cream); }
+  .story-body ul { padding-left: 22px; }
+  .story-body li { margin: 6px 0; }
+  .story-body a { color: var(--accent); }
+  .updated { color: var(--cream-faint); font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a class="brand" href="/"><span class="mark"></span>Kinfire</a>
+  <div class="links">
+    <a href="/#how">How it works</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/#faq">FAQ</a>
+    <a href="support.html">Support</a>
+  </div>
+  <div class="store-row small">
+    <a class="button small" href="https://apps.apple.com/app/id6796059354">App Store</a>
+    <a class="button small" href="https://play.google.com/store/apps/details?id=com.scottgordon.kinfire">Google Play</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/#how">How it works</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/#faq">FAQ</a>
+  <a href="support.html">Support</a>
+</div>
+
+<header class="story-hero">
+  <span class="eyebrow">Kinfire</span>
+  <h1>Support</h1>
+</header>
+
+<div class="story-body">
+  <p>Email <a href="mailto:hello@blackhookgroup.com">hello@blackhookgroup.com</a> and a real person will get back to you, usually within a day or two. It helps to say which phone you have (iPhone or Android).</p>
+
+  <h2>How do I add someone to our family?</h2>
+  <p>Open Settings and share the invite code. They install Kinfire, choose "Join my family" and enter the code. iPhone and Android can be in the same family.</p>
+
+  <h2>What is the Elder screen?</h2>
+  <p>A simple screen with one big record button and large text, for anyone who would rather not deal with a full app. During setup, choose Elder for that person's phone. The second button on the Elder screen plays what the rest of the family said this week.</p>
+
+  <h2>How do I open Settings on the Elder screen?</h2>
+  <p>Press and hold the top of the screen for a few seconds until Settings opens.</p>
+
+  <h2>When does the new question come out?</h2>
+  <p>Every Sunday at midnight in your family's time zone. Kinfire sends one reminder on Sunday at 6 PM, and no other notifications.</p>
+
+  <h2>Can I re-record my answer?</h2>
+  <p>Yes, up to 3 tries per week. Your newest try replaces the old one.</p>
+
+  <h2>Someone's answer is not showing up.</h2>
+  <p>Make sure both phones are online, then pull down on the This Week screen to refresh. Answers recorded offline upload once the phone is back online.</p>
+
+  <h2>I got a new phone.</h2>
+  <p>On iPhone, restoring from a backup keeps you in your family. On Android, Google backup keeps you in your family on most phones. If it does not, join again with the invite code.</p>
+
+  <h2>Who pays?</h2>
+  <p>Only the person who started the family. If you joined with a code and the app asks you to have someone renew, ask that person to check their subscription.</p>
+
+  <h2>How do I cancel?</h2>
+  <p>On iPhone: Settings, your name, Subscriptions. On Android: Google Play, your profile, Payments and subscriptions, Subscriptions.</p>
+
+  <h2>How do I delete my data?</h2>
+  <p>In Kinfire's Settings, choose "Delete my answers" or "Leave the family and delete my data." The person who started the family can also delete the whole family. Details are in the <a href="privacy.html">privacy policy</a>.</p>
+</div>
+
+<footer>
+  <div class="foot-links">
+    <a href="why-we-created-kinfire.html">Our story</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+    <a href="support.html">Support</a>
+  </div>
+  <div class="copyright">Kinfire, a Blackhook Group product</div>
+</footer>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+</script>
+</body>
+</html>
