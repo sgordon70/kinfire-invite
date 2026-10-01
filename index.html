@@ -44,15 +44,11 @@
     <p class="tagline">Every Sunday your family gets a new question. Most are fun, a few are more thoughtful. Everyone records their answer on their own phone, and the whole family can listen. Their stories, in their own voices.</p>
 
     <div id="inviteBanner">
-      <div class="code-label">Your family's invite code</div>
-      <div class="code" id="codeText"></div>
-      <ol class="steps">
-        <li>Tap App Store or Google Play below and install Kinfire.</li>
-        <li>Open the app. Your family comes up by itself.</li>
-        <li>On iPhone, tap "Allow Paste" if it asks. Nothing to type.</li>
-      </ol>
-      <button class="copy" id="copyBtn">Copy code</button>
-      <div class="hint" id="hint"></div>
+      <div class="code-label">You're invited to join your family on Kinfire</div>
+      <a class="button join-button" id="joinBtn" href="#">Open Kinfire and join</a>
+      <div class="hint" id="joinHint">If you don't have Kinfire yet, this takes you to the store first. When you open the app, your family comes up by itself. Nothing to type.</div>
+      <a class="open-existing" id="openExisting" href="#" style="display:none">Already have Kinfire? Open it</a>
+      <div class="small-code">Invite code: <span id="codeText"></span></div>
     </div>
 
     <div class="cta-row">
@@ -288,32 +284,48 @@
 
   const params = new URLSearchParams(window.location.search);
   const code = (params.get('code') || '').toUpperCase().trim();
-  const hint = document.getElementById('hint');
 
   if (code) {
     document.getElementById('codeText').textContent = code;
     document.getElementById('inviteBanner').style.display = 'block';
 
-    // Google Play hands this code to the app on first launch, so Android needs no paste.
-    document.getElementById('getAppLinkAndroid').href =
-      'https://play.google.com/store/apps/details?id=com.scottgordon.kinfire&referrer=' +
+    const ua = navigator.userAgent;
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua) || (ua.includes('Macintosh') && navigator.maxTouchPoints > 1);
+    const playUrl = 'https://play.google.com/store/apps/details?id=com.scottgordon.kinfire&referrer=' +
       encodeURIComponent('kinfire_code=' + code);
-
-    // iPhone has no install hand-off: copy the invite link, and the app picks it up
-    // from the clipboard the first time it opens.
+    const appStoreUrl = 'https://apps.apple.com/app/id6796059354';
     const inviteLink = 'https://joinkinfire.com/join/' + encodeURIComponent(code);
-    async function copyCode() {
-      try {
-        await navigator.clipboard.writeText(inviteLink);
-        hint.textContent = 'Invite saved. Kinfire will find it when you open the app.';
-      } catch (e) {
-        hint.textContent = '';
-      }
-    }
+    const joinBtn = document.getElementById('joinBtn');
 
-    document.getElementById('getAppLinkIOS').addEventListener('click', copyCode);
-    document.getElementById('getAppLinkAndroid').addEventListener('click', copyCode);
-    document.getElementById('copyBtn').addEventListener('click', copyCode);
+    // Google Play hands the code to the app on its first launch.
+    document.getElementById('getAppLinkAndroid').href = playUrl;
+
+    // iPhone has no install hand-off: save the invite link to the clipboard, and the
+    // app offers it the first time it opens.
+    async function saveInvite() {
+      try { await navigator.clipboard.writeText(inviteLink); } catch (e) {}
+    }
+    document.getElementById('getAppLinkIOS').addEventListener('click', saveInvite);
+
+    if (isAndroid) {
+      // Opens Kinfire straight to "Join FAMILY?" if it's installed; otherwise
+      // Google Play, carrying the invite so the app joins on first open.
+      joinBtn.href = 'intent://joinkinfire.com/join/' + encodeURIComponent(code) +
+        '#Intent;scheme=https;package=com.scottgordon.kinfire;S.browser_fallback_url=' +
+        encodeURIComponent(playUrl) + ';end';
+    } else if (isIOS) {
+      joinBtn.href = appStoreUrl;
+      joinBtn.addEventListener('click', saveInvite);
+      const openExisting = document.getElementById('openExisting');
+      openExisting.href = 'kinfire://join/' + encodeURIComponent(code);
+      openExisting.style.display = 'block';
+    } else {
+      // A computer: show the code for the phone.
+      joinBtn.style.display = 'none';
+      document.getElementById('joinHint').textContent =
+        'Open this link on the phone you want to use, or install Kinfire and enter the code below.';
+    }
   }
 </script>
 </body>
