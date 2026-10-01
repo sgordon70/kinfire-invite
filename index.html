@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <title>Kinfire: a weekly question for your family</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="One question a week for your whole family. Everyone answers out loud on iPhone or Android, and everyone can listen.">
+<meta name="description" content="One question a week for your whole family. Their stories, in their own voices, on iPhone or Android.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Kinfire">
-<meta property="og:description" content="One question a week for your whole family. Everyone answers out loud on iPhone or Android, and everyone can listen.">
+<meta property="og:description" content="One question a week for your whole family. Their stories, in their own voices, on iPhone or Android.">
 <meta property="og:url" content="https://joinkinfire.com/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kinfire">
-<meta name="twitter:description" content="One question a week for your whole family. Everyone answers out loud on iPhone or Android, and everyone can listen.">
+<meta name="twitter:description" content="One question a week for your whole family. Their stories, in their own voices, on iPhone or Android.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -41,15 +41,15 @@
   <div>
     <div class="hero-badge">A new question every Sunday</div>
     <h1 class="title">Hear your family's voices, one question a week</h1>
-    <p class="tagline">Every Sunday your family gets a new question. Most are fun, a few are more thoughtful. Everyone answers out loud on their own phone, and everyone can listen to everyone else's answers.</p>
+    <p class="tagline">Every Sunday your family gets a new question. Most are fun, a few are more thoughtful. Everyone records their answer on their own phone, and the whole family can listen. Their stories, in their own voices.</p>
 
     <div id="inviteBanner">
       <div class="code-label">Your family's invite code</div>
       <div class="code" id="codeText"></div>
       <ol class="steps">
         <li>Tap App Store or Google Play below and install Kinfire.</li>
-        <li>Open the app.</li>
-        <li>Choose "Join my family," then tap Paste. Your code fills in.</li>
+        <li>Open the app. Your family comes up by itself.</li>
+        <li>On iPhone, tap "Allow Paste" if it asks. Nothing to type.</li>
       </ol>
       <button class="copy" id="copyBtn">Copy code</button>
       <div class="hint" id="hint"></div>
@@ -294,10 +294,18 @@
     document.getElementById('codeText').textContent = code;
     document.getElementById('inviteBanner').style.display = 'block';
 
+    // Google Play hands this code to the app on first launch, so Android needs no paste.
+    document.getElementById('getAppLinkAndroid').href =
+      'https://play.google.com/store/apps/details?id=com.scottgordon.kinfire&referrer=' +
+      encodeURIComponent('kinfire_code=' + code);
+
+    // iPhone has no install hand-off: copy the invite link, and the app picks it up
+    // from the clipboard the first time it opens.
+    const inviteLink = 'https://joinkinfire.com/join/' + encodeURIComponent(code);
     async function copyCode() {
       try {
-        await navigator.clipboard.writeText(code);
-        hint.textContent = 'Code copied. It will paste in automatically.';
+        await navigator.clipboard.writeText(inviteLink);
+        hint.textContent = 'Invite saved. Kinfire will find it when you open the app.';
       } catch (e) {
         hint.textContent = '';
       }
